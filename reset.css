@@ -54,7 +54,7 @@ script {
 /* generic block-level elements */
 body {
     display: block;
-    margin: 8px
+    margin: 0px
 }
 
 body:-webkit-full-page-media {

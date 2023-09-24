@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ウレトルクイズTV画面</title>
+    <title>tvcha screen</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
 
-    <!-- jQuery -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+    <!--Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
 
 </head>
@@ -25,14 +27,11 @@
     </div>
 
     <!-- 左下のA_Groupのパーセンテージ表示 -->
-    <div id="AGroupPercentage" class="text-with-edge" style="font-size: 100px; position: absolute; bottom: 0; left: 0;">
+    <div id="AGroupPercentage" style="font-size: 100px; position: absolute; bottom: 0; left: 0;">
     </div>
 
     <!-- 右側のB_Groupのパーセンテージ表示 -->
-    <div id="BGroupPercentage" class="text-with-edge"
-        style="font-size: 100px; position: absolute; bottom: 0; right: 0;"></div>
-
-    </div>
+    <div id="BGroupPercentage" style="font-size: 100px; position: absolute; bottom: 0; right: 0;"></div>
 
     <script type="module">
         //----------------------------------------
@@ -175,6 +174,8 @@
             });
 
         });
+
+
         let AGroupCount;
         let BGroupCount;
         let AGroupPercentage;
@@ -199,10 +200,8 @@
             // HTML要素にパーセンテージを表示
             // document.getElementById("AGroupPercentage").textContent = `${AGroupPercentage}%`;
             // document.getElementById("BGroupPercentage").textContent = `${BGroupPercentage}%`;
-            document.getElementById("AGroupPercentage").innerHTML = `${AGroupPercentage}<span class="small-percentage">%</span>`;
-            document.getElementById("BGroupPercentage").innerHTML = `${BGroupPercentage}<span class="small-percentage">%</span>`;
-
-
+            document.getElementById("AGroupPercentage").innerHTML = `${AGroupPercentage}<span id="Apercentage">%</span>`;
+            document.getElementById("BGroupPercentage").innerHTML = `${BGroupPercentage}<span id="Bpercentage">%</span>`;
 
             drawBarGraph(AGroupPercentage, BGroupPercentage);
             // console.log("テストonSnapshot")
@@ -340,6 +339,12 @@
         const lerpRate = 0.05;  // 補完率。0.05のような小さい値でスムーズな変化を得る
         let isFirstDraw = true;
 
+        let imageA = document.createElement('img');
+        imageA.src = './img/star.jpg';
+
+        let imageB = document.createElement('img');
+        imageB.src = './img/star_red.jpg';
+
         function drawBarGraph(AGroupPercentage, BGroupPercentage) {
 
             const barWidth = 200;
@@ -361,11 +366,17 @@
                 currentBGroupHeight += (targetBGroupHeight - currentBGroupHeight) * lerpRate;
             }
 
-            ctx.fillStyle = "#cc0000";
+            // Aグループのバーグラフのテクスチャを設定
+            let patternA = ctx.createPattern(imageA, 'repeat');
+            ctx.fillStyle = patternA;
+            // ctx.fillStyle = "#0000cc";
             ctx.fillRect(barX1, canvas.height, barWidth, -currentAGroupHeight);
             // console.log(barX1, canvas.height, barWidth, -currentAGroupHeight);
 
-            ctx.fillStyle = '#0000cc';
+
+            let patternB = ctx.createPattern(imageB, 'repeat');
+            ctx.fillStyle = patternB;
+            // ctx.fillStyle = '#cc0000';
             ctx.fillRect(barX2, canvas.height, barWidth, -currentBGroupHeight);
         };
 

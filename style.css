@@ -1,17 +1,10 @@
 body {
-    /* width: 500px; */
-    /* background-image: url("./img/living_bg.jpg"); */
+
     height: auto;
     background-repeat: no-repeat;
-    /* left: 0px; */
-    /* position: relative; */
-
-
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
-
-
 /************************** 
 スタンプ登録エリア
 ***************************/
@@ -40,31 +33,7 @@ input {
 
 
 /************************** 
-チャートデバイス表示エリア
-***************************/
-
-
-.chart-device-container {
-    display: flex;
-    align-items: flex-start;
-}
-
-/************************** 
-チャートjs画面
-***************************/
-#chart_wrapper {
-    width: 200px;
-    /* top: 310px; */
-    /* left: 80px; */
-    /* position: absolute; */
-}
-
-.myChart {
-    flex: 1;
-}
-
-/************************** 
-デバイスエリア
+ユーザー画面 CSSエリア
 ***************************/
 .device {
     flex: 1;
@@ -213,15 +182,6 @@ td img {
 
 
 /************************** 
-ドラッグ＆ドロップ関数
-***************************/
-.drag-over {
-    border: 2px solid blue;
-    /* ドラッグ中のセルの枠線を変更 */
-}
-
-
-/************************** 
 スマホ画面 ロゴ、説明エリア
 ***************************/
 
@@ -230,21 +190,81 @@ a:hover {
     cursor: pointer;
 }
 
-
-/************************** 
-スマホ画面 テレビ画面表示
-***************************/
-
-iframe {
-    border: none;
-    width: 400px;
-    height: 220px;
-}
-
 /************************** 
 スマホ画面 ポイント表示
 ***************************/
 .userPoint {
     display: inline-block;
     /* 要素を横並びに表示 */
+}
+
+
+
+/************************** 
+ __________________
+|                  |
+|                  |
+|     テレビ画面     |
+|                  |
+|__________________|
+        ||  ||
+***************************/
+
+::-webkit-scrollbar {
+    /* スクロールバー外し */
+    display: none;
+}
+
+.overlay {
+    -ms-overflow-style: none;
+}
+
+#AGroupPercentage {
+    font-family: 'Fjalla One', sans-serif;
+    color: white;
+    vertical-align: bottom;
+    right: calc(100% + -30px);
+    transform: translateX(100%);
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 4;
+    position: relative;
+    text-shadow:
+        2px 2px 2px #000080, -2px -2px 2px #000080,
+        -2px 2px 2px #000080, 2px -2px 2px #000080,
+        2px 0px 2px #000080, -2px 0px 2px #000080,
+        0px 2px 2px #000080, 0px -2px 2px #000080;
+}
+
+#Apercentage {
+    font-size: 40%;
+    font-weight: 700;
+    position: absolute;
+    top: 60px;
+    right: -110px;
+}
+
+#BGroupPercentage {
+    font-family: 'Fjalla One', sans-serif;
+    color: white;
+    vertical-align: bottom;
+    left: calc(100% - 90px);
+    transform: translateX(-80%);
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 4;
+    position: relative;
+    text-shadow:
+        2px 2px 2px #8B0000, -2px -2px 2px #8B0000,
+        -2px 2px 2px #8B0000, 2px -2px 2px #8B0000,
+        2px 0px 2px #8B0000, -2px 0px 2px #8B0000,
+        0px 2px 2px #8B0000, 0px -2px 2px #8B0000;
+}
+
+#Bpercentage {
+    font-size: 40%;
+    font-weight: 700;
+    position: absolute;
+    top: 60px;
+    right: -50px;
 }
