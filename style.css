@@ -20,49 +20,34 @@ input {
     font-size: 20px;
 }
 
-/* #imagePreview {
-    top: 20px;
-    left: 320px;
-    position: absolute;
-} */
-
 #imagePreview img {
     width: 100px;
     margin: 10px;
 }
 
-
 /************************** 
 ユーザー画面 CSSエリア
 ***************************/
-.device {
-    flex: 1;
-    border-collapse: collapse;
-}
-
-
-.device td {
-    /* 枠線を黒色の点線に設定 */
-    border: 2px dashed gray;
-    /* セル内の余白を調整 */
-    padding: 10px;
-    /* 角丸の四角形に設定 */
-    border-radius: 20px;
-    /* セルの幅 */
-    width: 70px;
-    /* セルの高さ */
-    height: 70px;
-
-}
-
-/************************** 
-スタンプ表示エリア
-***************************/
-
-
 #stampWrapper {
     display: flex;
     justify-content: center;
+    position:relative;
+}
+
+
+/*真ん中の縦の線を表すスタイル */
+#stampWrapper:after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 50%;
+    /* 線の幅 */
+    width: 0.5px;
+    /* 線の色 */
+    background-color: gray;
+    /* 中央に配置 */
+    transform: translateX(-50%);
 }
 
 .stampContainer {
@@ -90,16 +75,72 @@ input {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
-    /* 画像とポイントの間に余白を設定 */
 }
 
 .image {
     width: 70px;
     height: 70px;
     margin: 10px 10px 0px 10px;
+
+    /* アニメーションの時間を調整 */
+    animation-duration: 0.5s;
+    /* タイミング関数を指定 */
+    animation-timing-function: ease;
+    /* アニメーションの繰り返し回数を指定 */
+    animation-iteration-count: 1;
+    /* アニメーション完了後に最終スタイルを保持 */
+    animation-fill-mode: forwards;
+    /* デフォルトの透明度 */
+    /* opacity: 1; */
+    /* 透明度の変更をアニメーションする */
+    transition: opacity 1s;
 }
 
+/* スタンプがクリックされたときのアニメーション */
+.clicked-image {
+    /* アニメーション名を指定 */
+    animation-name: bounceAndExit;
+    /* アニメーションの時間を調整 */
+    animation-duration: 0.5s;
+    /* タイミング関数を指定 */
+    animation-timing-function: ease;
+    /* アニメーションの繰り返し回数を指定 */
+    animation-iteration-count: 1;
+    /* アニメーション完了後に最終スタイルを保持 */
+    animation-fill-mode: forwards;
+    /* 透明度を指定するためのクラス */
+    opacity: 0.5;
+}
 
+/* スタンプが跳ねるアニメーションのキーフレーム */
+@keyframes bounceAndExit {
+
+    0%,
+    20% {
+        transform: translateY(0);
+        /* Y軸方向に移動しない */
+    }
+
+    30% {
+        transform: translateY(10px);
+        /* Y軸方向に10px移動 */
+    }
+
+    50% {
+        transform: translateY(20px);
+        /* Y軸方向に20px移動 */
+    }
+
+    60% {
+        transform: translateY(10px);
+        /* Y軸方向に10px移動 */
+    }
+
+    100% {
+        transform: translateY(-100vh);
+        /* Y軸方向に画面の高さ分 (-100vh) 移動 */
+    }
+}
 
 .point {
     font-size: 16px;

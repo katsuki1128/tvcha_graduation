@@ -28,14 +28,12 @@
             <a href="./index.html">
               <img class="w-full h-15 mr-2" src="./img/tvcha_logo.png" alt="logo" />
             </a>
-            <div class="text-center mt-4 mb-0 mr-2 ml-2">
-              <p class="text-lg">
-                ⭐️スタンプ飛ばして番組参加！⭐️<br>
-                <a href="./uretoru_screen.html" target="_blank">開発用スクリーン</a>
-                <i class="fas fa-external-link-alt"></i>
+            <div class="text-left mt-3">
+              <p class="text-sm mb-2 text-center">
+                ⭐️「Aのマサル」と「Bの伊藤アナ」⭐️<br>
+                ⭐️スタンプで参加しよう！⭐️
               </p>
             </div>
-
           </div>
         </div>
       </div>
@@ -165,7 +163,7 @@
         const pointElement = document.createElement('div');
         pointElement.textContent = `${initialPointData[index]}`;
         pointElement.className = 'point';
-        imageWrapper.appendChild(pointElement);
+        // imageWrapper.appendChild(pointElement);
 
         stampListContainer.appendChild(imageWrapper);
       });
@@ -259,7 +257,7 @@
         setTimeout(() => {
           // stampIdとuserIdを渡して処理を実行する（1秒後に実行）
           stampClick(stampId, userId);
-        }, 1000); // 1000ミリ秒（1秒）後に実行
+        }, 100); // 1000ミリ秒（1秒）後に実行
 
         // ボタンが押された時の挙動
         imageElement.classList.add('clicked-image'); // クリックされたら 'clicked-image' クラスを追加
@@ -273,7 +271,7 @@
           //     otherImageElement.style.opacity = '1';
           //   }
           // });
-        }, 7000);
+        }, 1000);
 
         // console.log(imageElements[clickedStampIndex]);
 
